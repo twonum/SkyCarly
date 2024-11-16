@@ -22,7 +22,7 @@
             "dest": "/backend/src/routes/$1"
         },
         {
-            "src": "/auth-callback",
+            "src": "/auth/callback",
             "dest": "/api/authCallback.js"
         },
         {
