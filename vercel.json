@@ -20,22 +20,7 @@
         },
         {
             "src": "/api/(.*)",
-            "dest": "/backend/api/$1"
+            "dest": "/backend/api.js"
         }
-    ],
-    "env": {
-        "NODE_ENV": "production",
-        "PORT": "3000",
-        "DATABASE_URL": "@your-database-url",
-        "CLOUDINARY_URL": "@your-cloudinary-url",
-        "CLERK_FRONTEND_API": "@your-clerk-frontend-api",
-        "CLERK_API_KEY": "@your-clerk-api-key",
-        "CLERK_API_SECRET": "@your-clerk-api-secret"
-    },
-    "functions": {
-        "backend/api/*.js": {
-            "memory": 1024,
-            "maxDuration": 10
-        }
-    }
+    ]
 }
