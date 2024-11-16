@@ -38,7 +38,7 @@ const SignInOAuthButtons = () => {
       <DropdownMenuTrigger asChild>
         <Button
           variant={"secondary"}
-          className="w-full text-white border-zinc-200 h-11 flex items-center justify-between"
+          className="w-auto sm:w-auto text-white border-zinc-200 h-11 flex items-center justify-between px-4" // Adjusting width and padding
         >
           <img
             src="/google.png"
@@ -49,10 +49,10 @@ const SignInOAuthButtons = () => {
           <ChevronDown className="ml-2" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-zinc-800 text-white">
+      <DropdownMenuContent className="bg-zinc-800 text-white mt-2 sm:mt-0 w-full sm:w-auto">
         <DropdownMenuItem
           onClick={signInWithGoogle}
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 p-2 hover:bg-zinc-700"
         >
           <img
             src="/google.png"
@@ -63,7 +63,7 @@ const SignInOAuthButtons = () => {
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={signInWithApple}
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 p-2 hover:bg-zinc-700"
         >
           <img
             src="/apple.png"
