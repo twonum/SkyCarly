@@ -38,39 +38,43 @@ const SignInOAuthButtons = () => {
       <DropdownMenuTrigger asChild>
         <Button
           variant={"secondary"}
-          className="w-auto sm:w-auto text-white border-zinc-200 h-11 flex items-center justify-between px-4" // Adjusting width and padding
+          className="w-full text-white border-zinc-200 h-11 flex items-center justify-between"
         >
-          <img
-            src="/google.png"
-            alt="Google"
-            className="w-5 h-5 mr-2" // Ensuring image size consistency
-          />
-          Continue sign in
+          <span className="hidden sm:inline-flex items-center">
+            <img
+              src="/google.png"
+              alt="Google"
+              className="w-5 h-5 mr-2" // Ensuring image size consistency
+            />
+            Sign in SkyCarly
+          </span>
+          <span className="sm:hidden">Sign In</span>{" "}
+          {/* Visible only on small devices */}
           <ChevronDown className="ml-2" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-zinc-800 text-white mt-2 sm:mt-0 w-full sm:w-auto">
+      <DropdownMenuContent className="bg-zinc-800 text-white">
         <DropdownMenuItem
           onClick={signInWithGoogle}
-          className="flex items-center space-x-2 p-2 hover:bg-zinc-700"
+          className="flex items-center space-x-2"
         >
           <img
             src="/google.png"
             alt="Google"
-            className="w-4 h-4" // Matching the size of the Google image
+            className="w-5 h-5" // Matching the size of the Google image
           />
-          <span>using Google</span>
+          <span>Continue with Google</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={signInWithApple}
-          className="flex items-center space-x-2 p-2 hover:bg-zinc-700"
+          className="flex items-center space-x-2"
         >
           <img
             src="/apple.png"
             alt="Apple"
             className="w-5 h-5" // Matching the size of the Apple image
           />
-          <span>using Apple</span>
+          <span>Continue with Apple</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
