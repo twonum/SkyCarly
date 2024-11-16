@@ -2,22 +2,25 @@
     "version": 2,
     "builds": [
         {
-            "src": "backend/index.js",
-            "use": "@vercel/node"
+            "src": "frontend/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
         },
         {
-            "src": "frontend/dist/**/*",
-            "use": "@vercel/static"
+            "src": "backend/package.json",
+            "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "/backend/index.js"
-        },
-        {
             "src": "/(.*)",
             "dest": "/frontend/dist/$1"
+        },
+        {
+            "src": "/api/(.*)",
+            "dest": "/backend/api/$1"
         }
     ],
     "env": {
@@ -29,23 +32,8 @@
         "CLERK_API_KEY": "@your-clerk-api-key",
         "CLERK_API_SECRET": "@your-clerk-api-secret"
     },
-    "build": {
-        "env": {
-            "NODE_ENV": "production"
-        }
-    },
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "/backend/index.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/frontend/dist/$1"
-        }
-    ],
     "functions": {
-        "backend/index.js": {
+        "backend/api/*.js": {
             "memory": 1024,
             "maxDuration": 10
         }
