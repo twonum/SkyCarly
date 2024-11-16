@@ -20,6 +20,10 @@
         {
             "src": "/api/(.*)",
             "dest": "/backend/api/$1"
+        },
+        {
+            "src": "/auth-callback",
+            "dest": "/api/authCallback.js"
         }
     ]
 }
