@@ -8,11 +8,15 @@ import fs from "fs";
 import { createServer } from "http";
 import cron from "node-cron";
 
-// Import the new consolidated API routes
-import apiRoutes from "./routes/api.js";
-
 import { initializeSocket } from "./lib/socket.js";
+
 import { connectDB } from "./lib/db.js";
+import userRoutes from "./routes/user.route.js";
+import adminRoutes from "./routes/admin.route.js";
+import authRoutes from "./routes/auth.route.js";
+import songRoutes from "./routes/song.route.js";
+import albumRoutes from "./routes/album.route.js";
+import statRoutes from "./routes/stat.route.js";
 
 dotenv.config();
 
@@ -38,12 +42,12 @@ app.use(
 		tempFileDir: path.join(__dirname, "tmp"),
 		createParentPath: true,
 		limits: {
-			fileSize: 10 * 1024 * 1024, // 10MB max file size
+			fileSize: 10 * 1024 * 1024, // 10MB  max file size
 		},
 	})
 );
 
-// Cron jobs
+// cron jobs
 const tempDir = path.join(process.cwd(), "tmp");
 cron.schedule("0 * * * *", () => {
 	if (fs.existsSync(tempDir)) {
@@ -59,8 +63,12 @@ cron.schedule("0 * * * *", () => {
 	}
 });
 
-// Use the consolidated routes
-app.use("/api", apiRoutes); // Single entry point for all API routes
+app.use("/api/users", userRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/songs", songRoutes);
+app.use("/api/albums", albumRoutes);
+app.use("/api/stats", statRoutes);
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "../frontend/dist")));
@@ -69,7 +77,7 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 
-// Error handler
+// error handler
 app.use((err, req, res, next) => {
 	res.status(500).json({ message: process.env.NODE_ENV === "production" ? "Internal server error" : err.message });
 });
