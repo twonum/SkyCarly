@@ -4,14 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"update:routes": "node generateRoutes.js",
 		"build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
 		"start": "npm start --prefix backend"
 	},
 	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"@clerk/clerk-react": "^5.15.5"
-	}
+	"author": "Taha",
+	"license": "ISC"
 }
