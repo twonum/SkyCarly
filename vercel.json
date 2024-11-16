@@ -3,68 +3,68 @@
     "routes": [
         {
             "src": "/api/users",
-            "dest": "/src/routes/user.route.js"
+            "dest": "/backend/routes/user.route.js"
         },
         {
             "src": "/api/admin",
-            "dest": "/src/routes/admin.route.js"
+            "dest": "/backend/routes/admin.route.js"
         },
         {
             "src": "/api/auth",
-            "dest": "/src/routes/auth.route.js"
+            "dest": "/backend/routes/auth.route.js"
         },
         {
             "src": "/api/songs",
-            "dest": "/src/routes/song.route.js"
+            "dest": "/backend/routes/song.route.js"
         },
         {
             "src": "/api/albums",
-            "dest": "/src/routes/album.route.js"
+            "dest": "/backend/routes/album.route.js"
         },
         {
             "src": "/api/stats",
-            "dest": "/src/routes/stat.route.js"
+            "dest": "/backend/routes/stat.route.js"
         },
         {
             "src": "/api/songs/(?<id>.+)",
-            "dest": "/src/routes/song.route.js"
+            "dest": "/backend/routes/song.route.js"
         },
         {
             "src": "/api/albums/(?<albumId>.+)",
-            "dest": "/src/routes/album.route.js"
+            "dest": "/backend/routes/album.route.js"
         },
         {
             "src": "/api/users/messages/(?<userId>.+)",
-            "dest": "/src/routes/user.route.js"
+            "dest": "/backend/routes/user.route.js"
         },
         {
             "src": "/sso-callback",
-            "dest": "/frontend/dist/index.html"
+            "dest": "/frontend/index.html"
         },
         {
             "src": "/auth-callback",
-            "dest": "/frontend/dist/index.html"
+            "dest": "/frontend/index.html"
         },
         {
             "src": "/admin",
-            "dest": "/frontend/dist/index.html"
+            "dest": "/frontend/index.html"
         },
         {
             "src": "/chat",
-            "dest": "/frontend/dist/index.html"
+            "dest": "/frontend/index.html"
         },
         {
             "src": "/albums/(?<albumId>.+)",
-            "dest": "/frontend/dist/index.html"
+            "dest": "/frontend/index.html"
         },
         {
             "src": "/.*",
-            "dest": "/frontend/dist/index.html"
+            "dest": "/frontend/index.html"
         }
     ],
     "builds": [
         {
-            "src": "src/routes/**/*.js",
+            "src": "backend/**/*.js",
             "use": "@vercel/node"
         },
         {
