@@ -2,41 +2,24 @@
     "version": 2,
     "builds": [
         {
-            "src": "frontend/package.json",
+            "src": "backend/src/index.js",
             "use": "@vercel/node",
             "config": {
-                "zeroConfig": true
+                "maxDuration": 60
             }
         },
         {
-            "src": "backend/package.json",
-            "use": "@vercel/node"
+            "src": "frontend/vite.config.js",
+            "use": "@vercel/static-build",
+            "config": {
+                "maxDuration": 60
+            }
         }
     ],
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "/backend/src/routes/api.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/frontend/dist/$1"
-        },
-        {
-            "src": "/",
-            "dest": "/frontend/dist/index.html"
+            "src": "/api/.*",
+            "dest": "/api/index.js"
         }
-    ],
-    "env": {
-        "PORT": "5000",
-        "MONGODB_URI": "mongodb+srv://tahasaleemprofessnal:QvuTS9PgfrrGmuKQ@cluster0.kelwz.mongodb.net/SkyCarly?retryWrites=true&w=majority&appName=Cluster0",
-        "ADMIN_EMAIL": "tahasaleem.professnal@gmail.com",
-        "NODE_ENV": "development",
-        "CLOUDINARY_API_KEY": "255646684137584",
-        "CLOUDINARY_API_SECRET": "UWssLIMl-TUBOa0gDEabR6dYhTo",
-        "CLOUDINARY_CLOUD_NAME": "dnscv5adu",
-        "CLERK_PUBLISHABLE_KEY": "pk_test_YXJ0aXN0aWMtY295b3RlLTMzLmNsZXJrLmFjY291bnRzLmRldiQ",
-        "CLERK_SECRET_KEY": "sk_test_Fval0zE4DlAEQzLlQVqh8XjI0kEzAa6ctaQwhudDBt",
-        "VITE_CLERK_PUBLISHABLE_KEY": "pk_test_YXJ0aXN0aWMtY295b3RlLTMzLmNsZXJrLmFjY291bnRzLmRldiQ"
-    }
+    ]
 }
