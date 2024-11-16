@@ -19,11 +19,19 @@
         },
         {
             "src": "/api/(.*)",
-            "dest": "/backend/api/$1"
+            "dest": "/backend/src/routes/$1"
         },
         {
             "src": "/auth-callback",
             "dest": "/api/authCallback.js"
+        },
+        {
+            "src": "/socket.io/(.*)",
+            "dest": "/backend/src/socket.io/$1"
+        },
+        {
+            "src": "/:path*",
+            "dest": "/frontend/build/index.html"
         }
     ]
 }
