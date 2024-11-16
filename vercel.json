@@ -2,40 +2,8 @@
     "version": 2,
     "routes": [
         {
-            "src": "/api/users",
-            "dest": "/backend/routes/user.route.js"
-        },
-        {
-            "src": "/api/admin",
-            "dest": "/backend/routes/admin.route.js"
-        },
-        {
-            "src": "/api/auth",
-            "dest": "/backend/routes/auth.route.js"
-        },
-        {
-            "src": "/api/songs",
-            "dest": "/backend/routes/song.route.js"
-        },
-        {
-            "src": "/api/albums",
-            "dest": "/backend/routes/album.route.js"
-        },
-        {
-            "src": "/api/stats",
-            "dest": "/backend/routes/stat.route.js"
-        },
-        {
-            "src": "/api/songs/(?<id>.+)",
-            "dest": "/backend/routes/song.route.js"
-        },
-        {
-            "src": "/api/albums/(?<albumId>.+)",
-            "dest": "/backend/routes/album.route.js"
-        },
-        {
-            "src": "/api/users/messages/(?<userId>.+)",
-            "dest": "/backend/routes/user.route.js"
+            "src": "/api/(.*)",
+            "dest": "/backend/api.js"
         },
         {
             "src": "/sso-callback",
@@ -64,7 +32,7 @@
     ],
     "builds": [
         {
-            "src": "backend/**/*.js",
+            "src": "backend/api.js",
             "use": "@vercel/node"
         },
         {
