@@ -77,14 +77,14 @@ const AddAlbumDialog = () => {
           Add Album
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-zinc-900 border-zinc-700 max-w-lg sm:max-w-md sm:w-full">
+      <DialogContent className="bg-zinc-900 border-zinc-700 max-w-lg sm:max-w-md sm:w-full sm:max-h-[90vh] overflow-y-auto p-4 sm:p-6 rounded-lg">
         <DialogHeader>
           <DialogTitle>Add New Album</DialogTitle>
           <DialogDescription>
             Add a new album to your collection
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4 py-4 px-4 sm:px-6">
+        <div className="space-y-4">
           <input
             type="file"
             ref={fileInputRef}
@@ -108,29 +108,32 @@ const AddAlbumDialog = () => {
               </Button>
             </div>
           </div>
-          <div className="space-y-2">
+
+          <div className="space-y-3">
             <label className="text-sm font-medium">Album Title</label>
             <Input
               value={newAlbum.title}
               onChange={(e) =>
                 setNewAlbum({ ...newAlbum, title: e.target.value })
               }
-              className="bg-zinc-800 border-zinc-700"
+              className="bg-zinc-800 border-zinc-700 w-full"
               placeholder="Enter album title"
             />
           </div>
-          <div className="space-y-2">
+
+          <div className="space-y-3">
             <label className="text-sm font-medium">Artist</label>
             <Input
               value={newAlbum.artist}
               onChange={(e) =>
                 setNewAlbum({ ...newAlbum, artist: e.target.value })
               }
-              className="bg-zinc-800 border-zinc-700"
+              className="bg-zinc-800 border-zinc-700 w-full"
               placeholder="Enter artist name"
             />
           </div>
-          <div className="space-y-2">
+
+          <div className="space-y-3">
             <label className="text-sm font-medium">Release Year</label>
             <Input
               type="number"
@@ -141,14 +144,15 @@ const AddAlbumDialog = () => {
                   releaseYear: parseInt(e.target.value),
                 })
               }
-              className="bg-zinc-800 border-zinc-700"
+              className="bg-zinc-800 border-zinc-700 w-full"
               placeholder="Enter release year"
               min={1900}
               max={new Date().getFullYear()}
             />
           </div>
         </div>
-        <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+
+        <DialogFooter className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <Button
             variant="outline"
             onClick={() => setAlbumDialogOpen(false)}
@@ -171,4 +175,5 @@ const AddAlbumDialog = () => {
     </Dialog>
   );
 };
+
 export default AddAlbumDialog;

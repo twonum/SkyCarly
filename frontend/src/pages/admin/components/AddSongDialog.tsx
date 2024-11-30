@@ -250,7 +250,7 @@ const AddSongDialog = ({ className }: AddSongDialogProps) => {
           </div>
         </div>
 
-        <DialogFooter className="space-x-2 flex flex-col sm:flex-row">
+        <DialogFooter className="space-y-2 sm:space-y-0 sm:space-x-2 flex flex-col sm:flex-row">
           <Button
             variant="outline"
             onClick={() => setSongDialogOpen(false)}
@@ -261,10 +261,10 @@ const AddSongDialog = ({ className }: AddSongDialogProps) => {
           </Button>
           <Button
             onClick={handleSubmit}
-            disabled={isLoading}
-            className="w-full sm:w-auto"
+            disabled={isLoading || !files.audio || !files.image}
+            className="bg-emerald-500 hover:bg-emerald-600 text-black w-full sm:w-auto"
           >
-            {isLoading ? "Uploading..." : "Add Song"}
+            {isLoading ? "Adding..." : "Add Song"}
           </Button>
         </DialogFooter>
       </DialogContent>
