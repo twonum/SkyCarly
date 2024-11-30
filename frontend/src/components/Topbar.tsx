@@ -13,7 +13,7 @@ const Topbar = () => {
   return (
     <div
       className="
-        flex flex-wrap items-center justify-between p-4 sticky top-0 
+        flex items-center justify-between p-4 sticky top-0 
         bg-zinc-900/75 backdrop-blur-md z-10 sm:p-3
       "
     >
@@ -30,7 +30,7 @@ const Topbar = () => {
       </div>
 
       {/* Right Section: Admin, Sign-in, and UserButton */}
-      <div className="flex items-center gap-4 sm:gap-2 flex-wrap justify-end sm:flex-col sm:items-end">
+      <div className="flex items-center gap-4 sm:gap-2 flex-wrap justify-end">
         {isAdmin && (
           <Link
             to={"/admin"}
@@ -39,11 +39,17 @@ const Topbar = () => {
               "flex items-center gap-2 px-3 py-2 text-sm sm:px-2 sm:py-1"
             )}
           >
-            <LayoutDashboardIcon className="h-5 w-5 sm:h-4 sm:w-4" />
-            <span className="hidden sm:inline text-sm">Admin Dashboard</span>
+            <LayoutDashboardIcon className="h-5 w-5" />
+            {/* Show short text "Dashboard" on small screens */}
+            <span className="text-sm text-white sm:hidden">Dashboard</span>
+            {/* Show full text "Admin Dashboard" on large screens */}
+            <span className="text-sm text-white hidden sm:inline lg:inline">
+              Admin Dashboard
+            </span>
           </Link>
         )}
 
+        {/* Sign In and User Button */}
         <SignedOut>
           <SignInOAuthButtons />
         </SignedOut>

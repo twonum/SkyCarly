@@ -70,11 +70,13 @@ const HomePage = () => {
           </h1>
           <FeaturedSection />
           <div className="space-y-8">
+            {/* Section for Made For You */}
             <SectionGrid
               title="Made For You"
               songs={madeForYouSongs}
               isLoading={isLoading}
             />
+            {/* Section for Trending */}
             <SectionGrid
               title="Trending"
               songs={trendingSongs}
