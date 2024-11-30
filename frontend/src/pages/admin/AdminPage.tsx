@@ -10,7 +10,6 @@ import { useMusicStore } from "@/stores/useMusicStore";
 
 const AdminPage = () => {
   const { isAdmin, isLoading } = useAuthStore();
-
   const { fetchAlbums, fetchSongs, fetchStats } = useMusicStore();
 
   useEffect(() => {
@@ -22,25 +21,26 @@ const AdminPage = () => {
   if (!isAdmin && !isLoading) return <div>Unauthorized</div>;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black text-zinc-100 p-6 md:p-8">
+    <div className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black text-zinc-100 p-4 sm:p-6 md:p-8">
       <Header />
 
+      {/* Dashboard Stats */}
       <DashboardStats />
 
       <Tabs defaultValue="songs" className="space-y-6">
-        <TabsList className="p-1 bg-zinc-800/50 flex flex-wrap justify-center sm:justify-start">
+        <TabsList className="p-2 bg-zinc-800/50 flex flex-wrap justify-center sm:justify-start">
           <TabsTrigger
             value="songs"
-            className="data-[state=active]:bg-zinc-700 flex items-center justify-center p-3 m-2 rounded-md text-sm sm:text-base"
+            className="data-[state=active]:bg-zinc-700 flex items-center justify-center p-2 m-1 rounded-md text-sm sm:text-base"
           >
-            <Music className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
+            <Music className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
             Songs
           </TabsTrigger>
           <TabsTrigger
             value="albums"
-            className="data-[state=active]:bg-zinc-700 flex items-center justify-center p-3 m-2 rounded-md text-sm sm:text-base"
+            className="data-[state=active]:bg-zinc-700 flex items-center justify-center p-2 m-1 rounded-md text-sm sm:text-base"
           >
-            <Album className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
+            <Album className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
             Albums
           </TabsTrigger>
         </TabsList>
