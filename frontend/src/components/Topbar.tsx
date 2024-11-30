@@ -13,36 +13,36 @@ const Topbar = () => {
   return (
     <div
       className="
-        flex items-center justify-between p-4 sticky top-0 
-        bg-zinc-900/75 backdrop-blur-md z-10 sm:p-3
+        flex items-center justify-between p-3 sticky top-0 
+        bg-zinc-900/75 backdrop-blur-md z-10 sm:p-2
       "
     >
       {/* Left Section: Logo and Title */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 sm:gap-2">
         <img
           src="/spotify.png"
-          className="h-8 w-8 sm:h-6 sm:w-6"
+          className="h-7 w-7 sm:h-6 sm:w-6"
           alt="Spotify logo"
         />
-        <span className="text-xl font-semibold sm:text-lg text-white">
+        <span className="text-lg font-semibold sm:text-base text-white truncate">
           SkyCarly
         </span>
       </div>
 
       {/* Right Section: Admin, Sign-in, and UserButton */}
-      <div className="flex items-center gap-4 sm:gap-2 flex-wrap justify-end">
+      <div className="flex items-center gap-3 sm:gap-2 flex-wrap justify-end">
         {isAdmin && (
           <Link
             to={"/admin"}
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "flex items-center gap-2 px-3 py-2 text-sm sm:px-2 sm:py-1"
+              "flex items-center gap-2 px-3 py-1 text-sm sm:px-2 sm:py-1"
             )}
           >
             <LayoutDashboardIcon className="h-5 w-5" />
             {/* Show short text "Dashboard" on small screens */}
             <span className="text-sm text-white sm:hidden">Dashboard</span>
-            {/* Show full text "Admin Dashboard" on large screens */}
+            {/* Show full text "Admin Dashboard" on larger screens */}
             <span className="text-sm text-white hidden sm:inline lg:inline">
               Admin Dashboard
             </span>
