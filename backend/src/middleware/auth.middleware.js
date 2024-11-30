@@ -9,20 +9,34 @@ export const protectRoute = async (req, res, next) => {
 
 export const requireAdmin = async (req, res, next) => {
 	try {
-		// Fetch user details
+		// Fetch the current user from Clerk
 		const currentUser = await clerkClient.users.getUser(req.auth.userId);
 		const userEmail = currentUser.primaryEmailAddress?.emailAddress;
 
-		// Ensure ADMIN_EMAILS is correctly parsed and fallbacks if necessary
-		const adminEmails = JSON.parse(process.env.ADMIN_EMAILS || '["default@example.com"]'); // Fallback email for safety
+		if (!userEmail) {
+			return res.status(400).json({ message: "User email not found" });
+		}
 
-		if (!adminEmails.includes(userEmail)) {
+		// Parse the ADMIN_EMAILS environment variable and ensure it's a valid list
+		let adminEmails = [];
+		try {
+			adminEmails = JSON.parse(process.env.ADMIN_EMAILS || '[]');
+		} catch (error) {
+			console.error("Error parsing ADMIN_EMAILS", error);
+			return res.status(500).json({ message: "Internal Server Error - Invalid admin email list" });
+		}
+
+		// Check if the user's email is in the list of admin emails
+		const isAdmin = adminEmails.includes(userEmail);
+
+		if (!isAdmin) {
 			return res.status(403).json({ message: "Unauthorized - Only admins can access" });
 		}
 
+		// Proceed to the next middleware or route handler if the user is an admin
 		next();
 	} catch (error) {
-		console.error("Error in requireAdmin", error);
-		next(error); // Pass the error to the next handler
+		console.error("Error in requireAdmin middleware", error);
+		return res.status(500).json({ message: "Internal Server Error" });
 	}
 };
