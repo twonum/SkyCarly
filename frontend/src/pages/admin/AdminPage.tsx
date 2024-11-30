@@ -28,19 +28,19 @@ const AdminPage = () => {
       <DashboardStats />
 
       <Tabs defaultValue="songs" className="space-y-6">
-        <TabsList className="p-2 bg-zinc-800/50 flex flex-wrap justify-center sm:justify-start">
+        <TabsList className="p-2 bg-zinc-800/50 flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-4">
           <TabsTrigger
             value="songs"
-            className="data-[state=active]:bg-zinc-700 flex items-center justify-center p-2 m-1 rounded-md text-sm sm:text-base"
+            className="data-[state=active]:bg-zinc-700 flex items-center justify-center p-2 m-1 rounded-md text-xs sm:text-sm md:text-base"
           >
-            <Music className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+            <Music className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
             Songs
           </TabsTrigger>
           <TabsTrigger
             value="albums"
-            className="data-[state=active]:bg-zinc-700 flex items-center justify-center p-2 m-1 rounded-md text-sm sm:text-base"
+            className="data-[state=active]:bg-zinc-700 flex items-center justify-center p-2 m-1 rounded-md text-xs sm:text-sm md:text-base"
           >
-            <Album className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+            <Album className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
             Albums
           </TabsTrigger>
         </TabsList>

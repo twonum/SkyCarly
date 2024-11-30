@@ -77,14 +77,14 @@ const AddAlbumDialog = () => {
           Add Album
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-zinc-900 border-zinc-700">
+      <DialogContent className="bg-zinc-900 border-zinc-700 max-w-lg sm:max-w-md sm:w-full">
         <DialogHeader>
           <DialogTitle>Add New Album</DialogTitle>
           <DialogDescription>
             Add a new album to your collection
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4 py-4">
+        <div className="space-y-4 py-4 px-4 sm:px-6">
           <input
             type="file"
             ref={fileInputRef}
@@ -93,7 +93,7 @@ const AddAlbumDialog = () => {
             className="hidden"
           />
           <div
-            className="flex items-center justify-center p-6 border-2 border-dashed border-zinc-700 rounded-lg cursor-pointer"
+            className="flex items-center justify-center p-4 sm:p-6 border-2 border-dashed border-zinc-700 rounded-lg cursor-pointer"
             onClick={() => fileInputRef.current?.click()}
           >
             <div className="text-center">
@@ -148,17 +148,18 @@ const AddAlbumDialog = () => {
             />
           </div>
         </div>
-        <DialogFooter>
+        <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-4">
           <Button
             variant="outline"
             onClick={() => setAlbumDialogOpen(false)}
             disabled={isLoading}
+            className="w-full sm:w-auto"
           >
             Cancel
           </Button>
           <Button
             onClick={handleSubmit}
-            className="bg-violet-500 hover:bg-violet-600"
+            className="bg-violet-500 hover:bg-violet-600 w-full sm:w-auto"
             disabled={
               isLoading || !imageFile || !newAlbum.title || !newAlbum.artist
             }
