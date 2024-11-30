@@ -9,21 +9,20 @@ export const protectRoute = async (req, res, next) => {
 
 export const requireAdmin = async (req, res, next) => {
 	try {
+		// Fetch user details
 		const currentUser = await clerkClient.users.getUser(req.auth.userId);
 		const userEmail = currentUser.primaryEmailAddress?.emailAddress;
 
-		// Parse the ADMIN_EMAILS environment variable (ensure it is treated as a list)
-		const adminEmails = JSON.parse(process.env.ADMIN_EMAILS || '[]');
+		// Ensure ADMIN_EMAILS is correctly parsed and fallbacks if necessary
+		const adminEmails = JSON.parse(process.env.ADMIN_EMAILS || '["default@example.com"]'); // Fallback email for safety
 
-		// Check if the user's email is in the list of admin emails
-		const isAdmin = adminEmails.includes(userEmail);
-
-		if (!isAdmin) {
+		if (!adminEmails.includes(userEmail)) {
 			return res.status(403).json({ message: "Unauthorized - Only admins can access" });
 		}
 
 		next();
 	} catch (error) {
-		next(error);
+		console.error("Error in requireAdmin", error);
+		next(error); // Pass the error to the next handler
 	}
 };
