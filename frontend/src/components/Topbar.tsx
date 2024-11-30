@@ -18,7 +18,7 @@ const Topbar = () => {
       "
     >
       {/* Left Section: Logo and Title */}
-      <div className="flex items-center gap-1 sm:gap-2">
+      <div className="flex items-center gap-2 sm:gap-2">
         <img
           src="/spotify.png"
           className="h-7 w-7 sm:h-6 sm:w-6"
@@ -36,7 +36,7 @@ const Topbar = () => {
             to={"/admin"}
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "flex items-center gap-2 px-3 py-1 text-sm sm:px-2 sm:py-1"
+              "flex items-center gap-1 px-2 py-1 text-sm sm:px-1 sm:py-1"
             )}
           >
             <LayoutDashboardIcon className="h-5 w-5" />
@@ -54,7 +54,9 @@ const Topbar = () => {
           <SignInOAuthButtons />
         </SignedOut>
 
-        <UserButton />
+        <div className="flex items-center gap-2">
+          <UserButton />
+        </div>
       </div>
     </div>
   );
