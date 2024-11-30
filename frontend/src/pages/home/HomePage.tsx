@@ -27,7 +27,7 @@ const HomePage = () => {
   // Set User's Name Using Clerk
   useEffect(() => {
     if (user) {
-      setUserName(user.fullName || "Guest"); // Extract first name or default to "Guest"
+      setUserName(user.fullName ? user.fullName : "Guest"); // Extract first name or default to "Guest"
     }
   }, [user]);
 

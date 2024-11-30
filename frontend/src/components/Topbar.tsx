@@ -12,22 +12,35 @@ const Topbar = () => {
 
   return (
     <div
-      className="flex items-center justify-between p-4 sticky top-0 bg-zinc-900/75 
-      backdrop-blur-md z-10
-    "
+      className="
+        flex flex-wrap items-center justify-between p-4 sticky top-0 
+        bg-zinc-900/75 backdrop-blur-md z-10 sm:p-3
+      "
     >
-      <div className="flex gap-2 items-center">
-        <img src="/spotify.png" className="size-8" alt="Spotify logo" />
-        SkyCarly
+      {/* Left Section: Logo and Title */}
+      <div className="flex items-center gap-2">
+        <img
+          src="/spotify.png"
+          className="h-8 w-8 sm:h-6 sm:w-6"
+          alt="Spotify logo"
+        />
+        <span className="text-xl font-semibold sm:text-lg text-white">
+          SkyCarly
+        </span>
       </div>
-      <div className="flex items-center gap-4">
+
+      {/* Right Section: Admin, Sign-in, and UserButton */}
+      <div className="flex items-center gap-4 sm:gap-2 flex-wrap justify-end sm:flex-col sm:items-end">
         {isAdmin && (
           <Link
             to={"/admin"}
-            className={cn(buttonVariants({ variant: "outline" }))}
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "flex items-center gap-2 px-3 py-2 text-sm sm:px-2 sm:py-1"
+            )}
           >
-            <LayoutDashboardIcon className="size-4  mr-2" />
-            Admin Dashboard
+            <LayoutDashboardIcon className="h-5 w-5 sm:h-4 sm:w-4" />
+            <span className="hidden sm:inline text-sm">Admin Dashboard</span>
           </Link>
         )}
 
@@ -40,4 +53,5 @@ const Topbar = () => {
     </div>
   );
 };
+
 export default Topbar;
