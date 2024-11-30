@@ -47,16 +47,16 @@ const AlbumPage = () => {
                         to-zinc-900 pointer-events-none"
             aria-hidden="true"
           />
-          <div className="relative z-10 p-4 sm:p-6">
+          <div className="relative z-10 p-4 sm:p-6 md:p-8">
             <div className="flex flex-col sm:flex-row gap-6 items-center">
               <img
                 src={currentAlbum?.imageUrl}
                 alt={currentAlbum?.title}
-                className="w-48 sm:w-[240px] h-48 sm:h-[240px] shadow-xl rounded"
+                className="w-48 sm:w-[240px] h-48 sm:h-[240px] shadow-xl rounded mb-4 sm:mb-0"
               />
               <div className="flex flex-col items-center sm:items-start">
                 <p className="text-sm font-medium text-zinc-300">Album</p>
-                <h1 className="text-4xl sm:text-7xl font-bold my-2 text-center sm:text-left">
+                <h1 className="text-3xl sm:text-5xl font-bold my-2 text-center sm:text-left">
                   {currentAlbum?.title}
                 </h1>
                 <div className="flex flex-wrap justify-center sm:justify-start gap-2 text-sm text-zinc-100">
@@ -124,7 +124,7 @@ const AlbumPage = () => {
                           <img
                             src={song.imageUrl}
                             alt={song.title}
-                            className="w-10 h-10"
+                            className="w-10 h-10 sm:w-12 sm:h-12"
                           />
                           <div>
                             <div className="font-medium text-white">
