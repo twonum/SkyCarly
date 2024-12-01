@@ -57,13 +57,22 @@ const AddSongDialog = ({ className }: AddSongDialogProps) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async () => {
+    // Validate inputs
+    if (
+      !newSong.title ||
+      !newSong.artist ||
+      !newSong.duration ||
+      !files.audio ||
+      !files.image
+    ) {
+      return toast.error(
+        "Please fill in all fields and upload both audio and image files."
+      );
+    }
+
     setIsLoading(true);
 
     try {
-      if (!files.audio || !files.image) {
-        return toast.error("Please upload both audio and image files");
-      }
-
       const formData = new FormData();
 
       formData.append("title", newSong.title);
@@ -93,9 +102,14 @@ const AddSongDialog = ({ className }: AddSongDialogProps) => {
         audio: null,
         image: null,
       });
+
       toast.success("Song added successfully");
+      //quick refresh
+      window.location.reload();
     } catch (error: any) {
-      toast.error("Failed to add song: " + error.message);
+      const errorMessage =
+        error.response?.data?.message || error.message || "Failed to add song";
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -239,7 +253,9 @@ const AddSongDialog = ({ className }: AddSongDialogProps) => {
                 <SelectValue placeholder="Select album" />
               </SelectTrigger>
               <SelectContent className="bg-zinc-800 border-zinc-700">
-                <SelectItem value="none">No Album (Single)</SelectItem>
+                <SelectItem value="none" disabled={albums.length === 0}>
+                  No Album (Single)
+                </SelectItem>
                 {albums.map((album) => (
                   <SelectItem key={album._id} value={album._id}>
                     {album.title}
@@ -264,7 +280,7 @@ const AddSongDialog = ({ className }: AddSongDialogProps) => {
             disabled={isLoading || !files.audio || !files.image}
             className="bg-emerald-500 hover:bg-emerald-600 text-black w-full sm:w-auto"
           >
-            {isLoading ? "Adding..." : "Add Song"}
+            {isLoading ? "Uploading..." : "Add Song"}
           </Button>
         </DialogFooter>
       </DialogContent>
