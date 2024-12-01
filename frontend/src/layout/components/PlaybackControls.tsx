@@ -62,7 +62,7 @@ export const PlaybackControls = () => {
     <footer className="h-22 sm:h-24 bg-zinc-900 border-t border-zinc-800 px-6 sm:px-8">
       <div className="flex flex-col sm:flex-row justify-between items-center h-full max-w-screen-xl mx-auto gap-6 sm:gap-8">
         {/* Currently playing song */}
-        <div className="flex items-center gap-6 min-w-[180px] w-full sm:w-[30%]">
+        <div className="flex items-center gap-6 min-w-[180px] w-full sm:w-[30%] hidden sm:flex">
           {currentSong && (
             <>
               <img
@@ -85,10 +85,11 @@ export const PlaybackControls = () => {
         {/* Player controls */}
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-6 sm:justify-center w-full sm:w-[40%]">
           <div className="flex items-center gap-5 w-full justify-center sm:justify-start">
+            {/* Only show next/prev, play buttons */}
             <Button
               size="icon"
               variant="ghost"
-              className="hover:text-white text-zinc-400 hidden sm:flex"
+              className="hover:text-white text-zinc-400 sm:hidden"
             >
               <Shuffle className="h-5 w-5" />
             </Button>
@@ -125,13 +126,13 @@ export const PlaybackControls = () => {
             <Button
               size="icon"
               variant="ghost"
-              className="hover:text-white text-zinc-400 hidden sm:flex"
+              className="hover:text-white text-zinc-400 sm:hidden"
             >
               <Repeat className="h-5 w-5" />
             </Button>
           </div>
           {/* Seek bar */}
-          <div className="flex items-center w-full gap-3 sm:gap-4 sm:hidden">
+          <div className="flex items-center w-full gap-3 sm:gap-4 sm:flex">
             <div className="text-xs text-zinc-400">
               {formatTime(currentTime)}
             </div>
@@ -139,7 +140,7 @@ export const PlaybackControls = () => {
               value={[currentTime]}
               max={duration || 100}
               step={1}
-              className="w-full bg-zinc-800"
+              className="w-full bg-zinc-800 cursor-grab"
               onValueChange={handleSeek}
             />
             <div className="text-xs text-zinc-400">{formatTime(duration)}</div>
@@ -147,7 +148,7 @@ export const PlaybackControls = () => {
         </div>
 
         {/* Volume controls */}
-        <div className="flex items-center gap-5 min-w-[180px] w-full sm:w-[30%] justify-end sm:flex hidden">
+        <div className="flex items-center gap-5 min-w-[180px] w-full sm:w-[30%] justify-end sm:flex hidden sm:flex">
           <Button
             size="icon"
             variant="ghost"
@@ -181,7 +182,7 @@ export const PlaybackControls = () => {
               value={[volume]}
               max={100}
               step={1}
-              className="w-28 bg-zinc-800"
+              className="w-28 bg-zinc-800 cursor-grab"
               onValueChange={(value) => {
                 setVolume(value[0]);
                 if (audioRef.current) {
