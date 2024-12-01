@@ -62,8 +62,8 @@ export const PlaybackControls = () => {
   };
 
   return (
-    <footer className="h-20 sm:h-24 bg-zinc-900 border-t border-zinc-800 px-4">
-      <div className="flex flex-col sm:flex-row justify-between items-center h-full max-w-[1800px] mx-auto">
+    <footer className="h-24 bg-zinc-900 border-t border-zinc-800 px-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center h-full max-w-screen-xl mx-auto gap-4 sm:gap-6">
         {/* Currently playing song */}
         <div className="flex items-center gap-4 min-w-[180px] w-full sm:w-[30%]">
           {currentSong && (
@@ -86,8 +86,8 @@ export const PlaybackControls = () => {
         </div>
 
         {/* Player controls */}
-        <div className="flex flex-col items-center gap-2 flex-1 max-w-full sm:max-w-[45%]">
-          <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6 sm:justify-center w-full sm:w-[40%]">
+          <div className="flex items-center gap-4 sm:gap-6 w-full justify-center sm:justify-start">
             <Button
               size="icon"
               variant="ghost"
@@ -118,6 +118,7 @@ export const PlaybackControls = () => {
                 <Play className="h-5 w-5" />
               )}
             </Button>
+
             <Button
               size="icon"
               variant="ghost"
@@ -127,6 +128,7 @@ export const PlaybackControls = () => {
             >
               <SkipForward className="h-4 w-4" />
             </Button>
+
             <Button
               size="icon"
               variant="ghost"
@@ -137,7 +139,7 @@ export const PlaybackControls = () => {
           </div>
 
           {/* Seek bar */}
-          <div className="flex items-center gap-2 w-full sm:hidden">
+          <div className="flex items-center gap-2 w-full">
             <div className="text-xs text-zinc-400">
               {formatTime(currentTime)}
             </div>
@@ -153,7 +155,7 @@ export const PlaybackControls = () => {
         </div>
 
         {/* Volume controls */}
-        <div className="flex items-center gap-4 min-w-[180px] w-full sm:w-[30%] justify-end">
+        <div className="flex items-center gap-4 min-w-[180px] w-full sm:w-[30%] justify-end sm:justify-center flex-wrap sm:flex-nowrap">
           <Button
             size="icon"
             variant="ghost"
